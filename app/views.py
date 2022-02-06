@@ -92,7 +92,7 @@ def mobile(request, data=None):
 #  return render(request, 'app/mobile.html', {'mobiles':mobiles})
 
 def login(request):
- return render(request, 'app/login.html')
+ return render(request,'app/login.html')
 
 #def customerregistration(request):
  #return render(request, 'app/customerregistration.html')
