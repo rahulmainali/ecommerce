@@ -39,9 +39,6 @@ def address(request):
 def orders(request):
  return render(request, 'app/orders.html')
 
-def change_password(request):
- return render(request, 'app/changepassword.html')
-
 # Mobile Category separated by brands of mobile & below price tag
 def mobile(request, data=None):
  if data==None:
