@@ -48,7 +48,8 @@ def show_cart(request):
                 totalamount=amount + shipping_amount
             return render(request, 'app/addtocart.html',{'carts':cart,'totalamount':totalamount,'amount':amount})
 
-
+        else:
+            return render(request,'app/emptycart.html')
 
 def buy_now(request):
  return render(request, 'app/buynow.html')
