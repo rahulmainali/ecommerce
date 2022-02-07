@@ -25,7 +25,17 @@ class ProductDetailView(View):
 
 
 def add_to_cart(request):
+ user=request.user
+ product_id=request.GET.get('prod_id')
+ product=Product.objects.get(id=product_id)
+ Cart(user=user,product=product).save()
  return render(request, 'app/addtocart.html')
+
+def show_cart(request):
+    if request.user.is_authenticated:
+        user=request.user
+        cart=Cart.objects.filter(user=user)
+        return render(request, 'app/addtocart.html',{'carts':cart})
 
 def buy_now(request):
  return render(request, 'app/buynow.html')
