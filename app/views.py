@@ -68,12 +68,11 @@ def plus_cart(request):
         for p in cart_product:
             tempamount=(p.quantity * p.product.discounted_price)
             amount += tempamount
-            totalamount=amount + shipping_amount
 
         data={
             'quantity':c.quantity,
             'amount':amount,
-            'totalamount':totalamount
+            'totalamount':amount + shipping_amount
             }
         return JsonResponse(data)
 
@@ -91,12 +90,31 @@ def minus_cart(request):
         for p in cart_product:
             tempamount=(p.quantity * p.product.discounted_price)
             amount += tempamount
-            totalamount=amount + shipping_amount
 
         data={
             'quantity':c.quantity,
             'amount':amount,
-            'totalamount':totalamount
+            'totalamount':amount + shipping_amount
+            }
+        return JsonResponse(data)
+
+def remove_cart(request):
+    if request.method=='GET':
+        prod_id=request.GET['prod_id']
+        print(prod_id)
+        c=Cart.objects.get(Q(product=prod_id) & Q(user=request.user))
+        c.delete()
+        amount=0.0
+        shipping_amount=60.0
+        cart_product=[p for p in Cart.objects.all() if p.user==request.user]
+
+        for p in cart_product:
+            tempamount=(p.quantity * p.product.discounted_price)
+            amount += tempamount
+
+        data={
+            'amount':amount,
+            'totalamount':amount + shipping_amount
             }
         return JsonResponse(data)
 
