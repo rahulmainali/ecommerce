@@ -123,11 +123,12 @@ def buy_now(request):
  return render(request, 'app/buynow.html')
 
 def address(request):
- add=Customer.objects.filter(user=request.user)
- return render(request, 'app/address.html',{'add':add,'active':'btn-primary'})
+    add=Customer.objects.filter(user=request.user)
+    return render(request, 'app/address.html',{'add':add,'active':'btn-primary'})
 
 def orders(request):
- return render(request, 'app/orders.html')
+    op=OrderPlaced.objects.filter(user=request.user)
+    return render(request, 'app/orders.html',{'order_placed':op})
 
 # Mobile Category separated by brands of mobile & below price tag
 def mobile(request, data=None):
