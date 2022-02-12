@@ -151,44 +151,44 @@ def mobile(request, data=None):
  
  return render(request, 'app/mobile.html', {'mobiles':mobiles})
 
-#  # Laptop Category separated by brands of mobile & below price tag
-# def laptop(request, data=None):
-#  if data==None:
-#      mobiles=Product.objects.filter(category='M')
-#  elif data=='Redmi' or data=='Samsung':
-#      mobiles=Product.objects.filter(category='M').filter(brand=data)
-#  elif data =='Below':
-#       mobiles=Product.objects.filter(category='M').filter(discounted_price__lt=20000)
-#  elif data =='Above':
-#       mobiles=Product.objects.filter(category='M').filter(discounted_price__gt=20000)
+# Laptop Category separated by brands of laptop & below price tag
+def laptop(request, data=None):
+ if data==None:
+     laptops=Product.objects.filter(category='L')
+ elif data=='Hp' or data=='Dell':
+     laptops=Product.objects.filter(category='L').filter(brand=data)
+ elif data =='Below':
+      laptops=Product.objects.filter(category='L').filter(discounted_price__lt=80000)
+ elif data =='Above':
+      laptops=Product.objects.filter(category='L').filter(discounted_price__gt=80000)
  
-#  return render(request, 'app/mobile.html', {'mobiles':mobiles})
+ return render(request, 'app/laptop.html', {'laptops':laptops})
 
-#  # Bottom Wear Category separated by brands of mobile & below price tag
-# def bottomWear(request, data=None):
-#  if data==None:
-#      mobiles=Product.objects.filter(category='M')
-#  elif data=='Redmi' or data=='Samsung':
-#      mobiles=Product.objects.filter(category='M').filter(brand=data)
-#  elif data =='Below':
-#       mobiles=Product.objects.filter(category='M').filter(discounted_price__lt=20000)
-#  elif data =='Above':
-#       mobiles=Product.objects.filter(category='M').filter(discounted_price__gt=20000)
+ # Bottom Wear Category separated by brands of bottom wear & below price tag
+def bottomwear(request, data=None):
+ if data==None:
+     bottomwears=Product.objects.filter(category='BW')
+ elif data=='Denim' or data=='Diesel':
+     bottomwears=Product.objects.filter(category='BW').filter(brand=data)
+ elif data =='Below':
+      bottomwears=Product.objects.filter(category='BW').filter(discounted_price__lt=2000)
+ elif data =='Above':
+      bottomwears=Product.objects.filter(category='BW').filter(discounted_price__gt=2000)
  
-#  return render(request, 'app/mobile.html', {'mobiles':mobiles})
+ return render(request, 'app/bottomwear.html', {'bottomwears':bottomwears})
 
-#  # Topwear Category separated by brands of mobile & below price tag
-# def topWear(request, data=None):
-#  if data==None:
-#      mobiles=Product.objects.filter(category='M')
-#  elif data=='Redmi' or data=='Samsung':
-#      mobiles=Product.objects.filter(category='M').filter(brand=data)
-#  elif data =='Below':
-#       mobiles=Product.objects.filter(category='M').filter(discounted_price__lt=20000)
-#  elif data =='Above':
-#       mobiles=Product.objects.filter(category='M').filter(discounted_price__gt=20000)
+ # Topwear Category separated by brands of mobile & below price tag
+def topwear(request, data=None):
+ if data==None:
+     topwears=Product.objects.filter(category='TW')
+ elif data=='Lee' or data=='Wrangler':
+     topwears=Product.objects.filter(category='TW').filter(brand=data)
+ elif data =='Below':
+      topwears=Product.objects.filter(category='TW').filter(discounted_price__lt=1000)
+ elif data =='Above':
+      topwears=Product.objects.filter(category='TW').filter(discounted_price__gt=1000)
  
-#  return render(request, 'app/mobile.html', {'mobiles':mobiles})
+ return render(request, 'app/topwear.html', {'topwears':topwears})
 
 def login(request):
  return render(request,'app/login.html')
