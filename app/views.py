@@ -124,10 +124,6 @@ def remove_cart(request):
             }
         return JsonResponse(data)
 
-
-def buy_now(request):
- return render(request, 'app/buynow.html')
-
 @login_required
 def address(request):
     add=Customer.objects.filter(user=request.user)
