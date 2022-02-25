@@ -251,5 +251,3 @@ class ProfileView(View):
             messages.success(request,'Profile Updated Sucessfully')
         
         return render(request,'app/profile.html',{'form':form,'active':'btn-primary'})
-
-
